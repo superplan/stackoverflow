@@ -1,0 +1,236 @@
+{
+  "openapi": "3.0.0",
+  "x-id": [
+    "reitit.swagger/default"
+  ],
+  "info": {
+    "title": "service-name",
+    "version": "0.1"
+  },
+  "paths": {
+    "/api/v1/{topic}/transformation": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Transformation itself with its identifiers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Transformation",
+                  "properties": {
+                    "topic": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "hash": {
+                      "type": "string",
+                      "pattern": "[0-9a-f]{7,40}"
+                    },
+                    "create_timestamp": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "transformation": {
+                      "type": "object",
+                      "title": "TransformationInstructions",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "topic",
+                    "version",
+                    "hash",
+                    "create_timestamp",
+                    "transformation"
+                  ]
+                }
+              },
+              "application/transit+msgpack": {
+                "schema": {
+                  "type": "object",
+                  "title": "Transformation",
+                  "properties": {
+                    "topic": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "hash": {
+                      "type": "string",
+                      "pattern": "[0-9a-f]{7,40}"
+                    },
+                    "create_timestamp": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "transformation": {
+                      "type": "object",
+                      "title": "TransformationInstructions",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "topic",
+                    "version",
+                    "hash",
+                    "create_timestamp",
+                    "transformation"
+                  ]
+                }
+              },
+              "application/transit+json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Transformation",
+                  "properties": {
+                    "topic": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "hash": {
+                      "type": "string",
+                      "pattern": "[0-9a-f]{7,40}"
+                    },
+                    "create_timestamp": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "transformation": {
+                      "type": "object",
+                      "title": "TransformationInstructions",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "topic",
+                    "version",
+                    "hash",
+                    "create_timestamp",
+                    "transformation"
+                  ]
+                }
+              },
+              "application/edn": {
+                "schema": {
+                  "type": "object",
+                  "title": "Transformation",
+                  "properties": {
+                    "topic": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "hash": {
+                      "type": "string",
+                      "pattern": "[0-9a-f]{7,40}"
+                    },
+                    "create_timestamp": {
+                      "type": "integer",
+                      "format": "int32"
+                    },
+                    "transformation": {
+                      "type": "object",
+                      "title": "TransformationInstructions",
+                      "additionalProperties": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "topic",
+                    "version",
+                    "hash",
+                    "create_timestamp",
+                    "transformation"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/transit+msgpack": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/transit+json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/edn": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "topic",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "version",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "in": "query",
+            "name": "hash",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "[0-9a-f]{7,40}"
+            }
+          }
+        ],
+        "tags": [
+          "api"
+        ],
+        "summary": "Fetch transformation",
+        "description": "If no version/hash params, latest resource is provided."
+      }
+    }
+  }
+}
